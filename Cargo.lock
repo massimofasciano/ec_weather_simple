@@ -67,7 +67,6 @@ dependencies = [
  "openssl",
  "quickxml_to_serde",
  "reqwest",
- "simple-xml",
 ]
 
 [[package]]
@@ -707,12 +706,6 @@ dependencies = [
  "ryu",
  "serde",
 ]
-
-[[package]]
-name = "simple-xml"
-version = "0.1.10"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e73900daedd2d1f51bb648e8a7dbc44a0f062403db9671a161fd52b3a283c0ea"
 
 [[package]]
 name = "slab"
