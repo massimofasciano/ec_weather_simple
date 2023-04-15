@@ -1,6 +1,6 @@
 [package]
 name = "ec_weather_simple"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Massimo Fasciano <massimo@mafalitic.com>"]
 description = "Get current weather conditions from Environment Canada"
