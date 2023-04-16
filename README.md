@@ -114,3 +114,26 @@ $ ec_weather_simple https://dd.weather.gc.ca/citypage_weather/xml/ON/s0000873_e.
    "error" : "Failed to fetch weather data for https://dd.weather.gc.ca/citypage_weather/xml/ON/s0000873_e.xml with status: 404 Not Found"
 }
 ```
+
+This simplified version is meant to be used as a plugin for Home Assistant, which can easily parse JSON, so there
+is no need to extract any of the values. Just outputting the appropriate part of the XML as JSON is enough.
+The fancy command line parsing is also irrelevant since the URL is handled by Home Assistant.
+
+It is rougly equivalent to the following piece of Python code:
+
+```python
+import json
+import xmltodict
+import requests
+import sys
+
+ec_url = "https://dd.weather.gc.ca/citypage_weather/xml/QC/s0000635_e.xml"
+if len(sys.argv) > 1:
+    ec_url = sys.argv[1]
+
+data_dict = xmltodict.parse(requests.get(ec_url,stream=True).content,cdata_key="value",attr_prefix='')
+
+json_data = json.dumps(data_dict["siteData"]["currentConditions"])
+
+print(json_data)
+```
